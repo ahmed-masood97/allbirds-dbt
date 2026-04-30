@@ -14,7 +14,7 @@ final as (
         market_segment,
         account_balance,
 
-        -- derived metrics useful for Allbirds finance reporting
+        -- business-friendly labels (useful for Looker/dashboards)
         case
             when order_status = 'F' then 'Fulfilled'
             when order_status = 'O' then 'Open'
@@ -26,7 +26,12 @@ final as (
             when order_total >= 200000 then 'High Value'
             when order_total >= 100000 then 'Mid Value'
             else 'Standard'
-        end as order_value_tier
+        end as order_value_tier,
+
+        -- date parts useful for finance reporting
+        date_trunc('month', order_date) as order_month,
+        date_trunc('quarter', order_date) as order_quarter,
+        year(order_date) as order_year
 
     from orders
 )
