@@ -1,5 +1,5 @@
 with source as (
-    select * from SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.ORDERS
+    select * from {{ source('tpch', 'ORDERS') }}
 ),
 
 renamed as (

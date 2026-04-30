@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: tpch
+    description: "Raw TPCH sample data from Snowflake"
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+
+    tables:
+      - name: ORDERS
+        description: "Raw orders table"
+        config:
+          loaded_at_field: "TO_TIMESTAMP(O_ORDERDATE)"
+          freshness:
+            warn_after: {count: 24, period: hour}
+            error_after: {count: 48, period: hour}
+
+      - name: CUSTOMER
+        description: "Raw customers table"
+        config:
+          freshness: null
