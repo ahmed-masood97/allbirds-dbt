@@ -18,12 +18,13 @@ clean-targets:
 
 models:
   allbirds:
-    staging:
-      +schema: staging
-      +materialized: view
-    intermediate:
-      +schema: intermediate
-      +materialized: view
-    marts:
-      +schema: marts
-      +materialized: table
+    example:
+      1_staging:
+        +schema: staging
+        +materialized: view
+      2_intermediate:
+        +schema: intermediate
+        +materialized: view
+      3_marts:
+        +schema: marts
+        +materialized: table
