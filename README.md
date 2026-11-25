@@ -1,4 +1,4 @@
-Welcome to your new dbt project!
+Allbirds dbt project to showcase dbt modeling and how to structure a repository semantically with testing.
 
 ### Using the starter project
 
